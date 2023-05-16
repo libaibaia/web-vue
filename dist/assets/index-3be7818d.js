@@ -1,0 +1,1 @@
+import{f as r,a as e}from"./index-0c819fdc.js";import{c as n}from"./IRequests-783be2cd.js";const a="";function l(){return r({url:"api",method:"get"})}function s(o,t={}){return r({url:a+"/api/user/login",data:t,method:o})}function c(){return e(),n("/api/user/logout","GET",null).then(o=>{window.localStorage.removeItem("Authorization")})}export{c as a,l as i,s as l};

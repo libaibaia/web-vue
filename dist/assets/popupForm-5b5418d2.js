@@ -1,0 +1,1 @@
+import{a as e,b as _,_ as o}from"./index-0c819fdc.js";import{h as a,K as p,a2 as s}from"./vue-a98ef309.js";const n=a({__name:"popupForm",setup(t){return e(),p(),s("baTable"),_(),(r,u)=>null}});const f=o(n,[["__scopeId","data-v-79fe87a5"]]);export{f as default};
