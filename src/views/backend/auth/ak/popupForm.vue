@@ -154,6 +154,10 @@ const options =[
         values: "AliYun"
     },
     {
+        label:"七牛",
+        values: "QINiu"
+    },
+    {
         label:"未知(未知厂商请选择)",
         values: "no"
     }

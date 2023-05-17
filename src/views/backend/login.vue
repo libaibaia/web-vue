@@ -82,6 +82,17 @@
                                     {{ t('login.Sign in') }}
                                 </el-button>
                             </el-form-item>
+                            <el-form-item>
+                                <div class="button-container">
+                                    <el-button  round type="success" size="large" @click="tools()">
+                                        By T00ls.Com
+                                    </el-button>
+                                    <el-button round type="success" size="large" @click="github()">
+                                        GitHub
+                                    </el-button>
+                                </div>
+                            </el-form-item>
+
                         </el-form>
                     </div>
                 </div>
@@ -113,7 +124,13 @@ const state = reactive({
     showCaptcha: false,
     captchaId: uuid(),
 })
+const tools = () => {
+    window.open("https://www.t00ls.com/", '_blank')
+}
 
+const github = () => {
+    window.open("https://github.com/libaibaia/cloudSec/tree/main", '_blank')
+}
 const onChangeCaptcha = () => {
     form.captcha = ''
     state.captchaId = uuid()
@@ -211,6 +228,11 @@ const onSubmit = (formEl: InstanceType<typeof ElForm> | undefined) => {
 </script>
 
 <style scoped lang="scss">
+.button-container {
+    display: flex;
+    justify-content: space-between;
+}
+
 .switch-language {
     position: fixed;
     top: 20px;

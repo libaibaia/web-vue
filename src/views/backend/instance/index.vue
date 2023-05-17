@@ -51,7 +51,7 @@
             width="30%"
         >
          <span>
-              <span style="color: red;align-content: center">!!!!是否确认生成密钥对，创建后自动导入对应实例，期间服务器会重启，且关闭密码登录,只能使用密钥登录</span>
+              <span style="color: red;align-content: center">!!!!是否确认生成密钥对，创建后自动导入对应实例，期间服务器会重启，且关闭密码登录,只能使用密钥登录，另外原密钥会被替换成新的，当然初次数据库会保存原来的密钥信息，可以还原</span>
         <el-form  ref="navigation" label-position="left"   label-width="80px">
             <el-form-item label="实例ID" prop="instanceId">
                <el-input v-model="instanceInfo.instanceId" disabled></el-input>
@@ -127,8 +127,22 @@ let createPairKeyBtn : OptButton = {
         createPairKey.status = true
     }
 }
+let restoreKey : OptButton = {
+    render: 'tipButton',
+    name: '还原密钥对',
+    title: '还原密钥对',
+    type: 'primary',
+    icon: 'el-icon-Key',
+    class: 'table-row-edit',
+    disabledTip: false,
+    click:(row: TableRow, field: TableColumn)=>{
+        createIAxios("/api/instance/restoreKey?id=" + row.id,"GET",null).then((res) =>{
+        })
+    }
+}
 let optButtons = defaultOptButtons([])
 optButtons.push(execBtn)
+optButtons.push(restoreKey)
 optButtons.push(createPairKeyBtn)
 const getExecRes = ()=>{
     createIAxios("/api/instance/exec","POST",instanceInfo).then((res) =>{
@@ -159,6 +173,7 @@ const baTable = new baTableClass(
             { label: 'id', prop: 'id', align: 'center', operator: 'LIKE', operatorPlaceholder: t('Fuzzy query'), width: 70 },
             { label: '实例ID', prop: 'instanceId', align: 'center', operator: 'LIKE', operatorPlaceholder: t('Fuzzy query') },
             { label: '所属区域', prop: 'region', align: 'center', operator: 'LIKE', operatorPlaceholder: t('Fuzzy query') },
+            { label: '原始密钥对', prop: 'originalKeyPair', align: 'center', operator: 'LIKE', operatorPlaceholder: t('Fuzzy query') },
             { label: '公钥', prop: 'publicKey', align: 'center', operator: 'LIKE', operatorPlaceholder: t('Fuzzy query') },
             { label: '私钥', prop: 'privateKey', align: 'center', operator: 'LIKE', operatorPlaceholder: t('Fuzzy query') },
             { label: '是否可执行命令', prop: 'isCommand', align: 'center', operator: 'LIKE', operatorPlaceholder: t('Fuzzy query') },
