@@ -152,7 +152,7 @@ const baTable = new baTableClass(
             { label: '区域', prop: 'region', align: 'center', operator: 'LIKE', operatorPlaceholder: t('Fuzzy query') },
             {
                 label: t('operate'),
-                width: '100',
+                width: '150',
                 render: 'buttons',
                 buttons: optButtons,
                 operator: false,

@@ -133,7 +133,7 @@ const baTable = new baTableClass(
             { label: '所属区域', prop: 'region', align: 'center', operator: 'LIKE', operatorPlaceholder: t('Fuzzy query') },
             { label: '拥有者账号', prop: 'owner', align: 'center', operator: 'LIKE', operatorPlaceholder: t('Fuzzy query') },
             { label: '名称', prop: 'name', align: 'center', operator: 'LIKE', operatorPlaceholder: t('Fuzzy query') },
-            { label: t('operate'), align: 'center', width: '130', render: 'buttons', buttons: optButtons },
+            { label: t('operate'), align: 'center', width: '120', render: 'buttons', buttons: optButtons },
         ],
     },
 )

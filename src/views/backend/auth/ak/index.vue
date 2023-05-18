@@ -4,8 +4,8 @@
 
         <!-- 表格顶部菜单 -->
         <TableHeader
-            :buttons="['refresh', 'add', 'edit', 'delete','stopAllTask','start']"
-            quick-search-placeholder="搜索"
+            :buttons="['refresh', 'add', 'delete','stopAllTask','start','quickSearch']"
+            quick-search-placeholder="根据名称搜索"
         />
 
         <!-- 表格 -->
@@ -52,6 +52,9 @@ import { getArrayKey } from '/@/utils/common'
 import createIAxios from "/@/utils/IRequests";
 import {TableColumn, TableRow} from "../../../../../types/table";
 import {ElMessage} from "element-plus";
+
+
+
 const formRef = ref()
 const tableRef = ref()
 const { t } = useI18n()
@@ -100,7 +103,6 @@ let createConsoleUser: OptButton = {
         creatConsoleUser()
     }
 }
-
 const restInfo = reactive({
     akId:'',
 })
@@ -124,10 +126,11 @@ const getPermLists = () => {
         }
     })
 }
-let optButtons = defaultOptButtons(['edit', 'delete'])
+let optButtons = defaultOptButtons(['edit','delete'])
 optButtons.push(restartBtn)
 optButtons.push(createConsoleUser)
 optButtons.push(getAttachedUserPolicies)
+
 const baTable: baTableClass = new baTableClass(
     new baTableApi(aksk),
     {

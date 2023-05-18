@@ -181,7 +181,7 @@ const baTable = new baTableClass(
             { label: 'type', prop: 'type', align: 'center', operator: 'LIKE', operatorPlaceholder: t('Fuzzy query') },
             {
                 label: t('operate'),
-                width: '100',
+                width: '180',
                 render: 'buttons',
                 buttons: optButtons,
                 operator: false,

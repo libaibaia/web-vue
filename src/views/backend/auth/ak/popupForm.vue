@@ -21,7 +21,7 @@
                 <el-form
                     ref="formRef"
                     @keyup.enter="baTable.onSubmit(formRef)"
-                    :model="formData.data"
+                    :model="baTable.form.items"
                     label-position="right"
                     :label-width="baTable.form.labelWidth + 'px'"
                     :rules="rules"
@@ -29,55 +29,55 @@
                 >
                     <el-form-item prop="name" label="名称">
                         <el-input
-                            v-model="formData.data.name"
+                            v-model="baTable.form.items!.name"
                             type="string"
                             :placeholder="t('Please input field', { field: '名称' })"
                         ></el-input>
                     </el-form-item>
                     <el-form-item prop="secretid" label="secretid">
                         <el-input
-                            v-model="formData.data.secretid"
+                            v-model="baTable.form.items!.secretid"
                             type="string"
                             :placeholder="t('Please input field', { field: 'secretID' })"
                         ></el-input>
                     </el-form-item>
                     <el-form-item prop="secretkey" label="secretkey">
                         <el-input
-                            v-model="formData.data.secretkey"
+                            v-model="baTable.form.items!.secretkey"
                             type="string"
                             :placeholder="t('Please input field', { field: 'secretKey' })"
                         ></el-input>
                     </el-form-item>
                     <el-form-item prop="token" label="token">
                         <el-input
-                            v-model="formData.data.token"
+                            v-model="baTable.form.items!.token"
                             type="string"
                             :placeholder="t('Please input field', { field: 'token' })"
                         ></el-input>
                     </el-form-item>
                     <el-form-item prop="bucketName" label="bucketName">
                         <el-input
-                            v-model="formData.data.bucketName"
+                            v-model="baTable.form.items!.bucketName"
                             type="string"
                             :placeholder="t('Please input field', { field: '存储桶名称，逗号分割，如果不具备listBucket权限则无法列举存储桶' })"
                         ></el-input>
                     </el-form-item>
                     <el-form-item prop="remark" label="描述信息">
                         <el-input
-                            v-model="formData.data.remark"
+                            v-model="baTable.form.items!.remark"
                             type="string"
                             :placeholder="t('Please input field', { field: '备注信息' })"
                         ></el-input>
                     </el-form-item>
                     <el-form-item prop="type" label="厂商类型">
-                        <el-select v-model="formData.data.type" placeholder="请选择">
+                        <el-select v-model="baTable.form.items!.type" placeholder="请选择">
                             <el-option v-for="item in options" :key="item" :label="item.label" :value="item.values">
                             </el-option>
                         </el-select>
                     </el-form-item>
                     <FormItem
                         :label="t('state')"
-                        v-model="formData.data.status"
+                        v-model="baTable.form.items!.status"
                         type="radio"
                         :data="{ content: { '0': '立即检测', '1': '手动执行' }, childrenAttr: { border: true } }"
                     />
@@ -87,7 +87,7 @@
         <template #footer>
             <div :style="'width: calc(100% - ' + baTable.form.labelWidth! / 1.8 + 'px)'">
                 <el-button @click="baTable.toggleForm('')">{{ t('Cancel') }}</el-button>
-                <el-button v-blur :loading="baTable.form.submitLoading" @click="postData" type="primary">
+                <el-button v-blur :loading="baTable.form.submitLoading" @click="baTable.onSubmit(formRef)" type="primary">
                     {{ baTable.form.operateIds && baTable.form.operateIds.length > 1 ? t('Save and edit next item') : t('Save') }}
                 </el-button>
             </div>
@@ -116,10 +116,10 @@ interface MenuRules {
 const treeRef = ref<InstanceType<typeof ElTree>>()
 const formRef = ref<InstanceType<typeof ElForm>>()
 const baTable = inject('baTable') as baTableClass
-
 const { t } = useI18n()
 const formData = reactive({
     data:{
+        id:"",
         secretid:"",
         secretkey:"",
         type:"",
@@ -162,19 +162,6 @@ const options =[
         values: "no"
     }
 ]
-const values = ref('')
-const postData = () => {
-    if (formData.data.secretkey && formData.data.secretid && formData.data.name){
-        baTable.form.submitLoading = true
-        createIAxios(aksk + "add","post",formData.data).then((res) =>{
-            baTable.form.submitLoading = false
-            console.log(res)
-        }).catch((error)=>{
-            baTable.form.submitLoading = false
-        })
-        baTable.toggleForm()
-    }
-}
 // getMenuRules().then((res) => {
 //     state.menuRules = res.data.list
 // })

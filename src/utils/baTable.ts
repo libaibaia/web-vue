@@ -206,7 +206,6 @@ export default class baTable {
      */
     onSubmit = (formEl: InstanceType<typeof ElForm> | undefined = undefined) => {
         if (this.runBefore('onSubmit', { formEl: formEl, operate: this.form.operate!, items: this.form.items! }) === false) return
-
         Object.keys(this.form.items!).forEach((item) => {
             if (this.form.items![item] === null) delete this.form.items![item]
         })

@@ -3,7 +3,7 @@ import createAxios from '/@/utils/axios'
 const controllerUrl = '/api/user/'
 export const actionUrl = new Map([
     ['index', controllerUrl + 'userInfo'],
-    ['edit', controllerUrl + 'edit'],
+    ['edit', controllerUrl + 'update'],
     ['log', controllerUrl + 'log'],
 ])
 
