@@ -36,6 +36,7 @@ import {useBaAccount} from "/@/stores/baAccount";
 import header from "/@/layouts/backend/components/header.vue";
 import axios from "axios";
 import {getUrl} from "/@/utils/axios";
+import {ElNotification} from "element-plus";
 const localBucketInfo = reactive({
     name:'',
     endpoint:''
@@ -91,9 +92,11 @@ const downloadFileFun = (id:any) =>{
     axios({
         method: 'get',
         url: url,
-        responseType: 'blob'
+        responseType: 'blob',
+        headers:{
+            'Authorization': window.localStorage.getItem("Authorization")
+        }
     }).then(response => {
-        console.log(response.headers['content-disposition'])
         const filename = response.headers['content-disposition'].split('filename=')[1];
         const url = window.URL.createObjectURL(new Blob([response.data]));
         const link = document.createElement('a');
@@ -103,7 +106,10 @@ const downloadFileFun = (id:any) =>{
         link.click();
         URL.revokeObjectURL(url); // 释放URL对象
     }).catch(error => {
-        console.log(error);
+        ElNotification({
+            type: 'error',
+            message: "下载失败",
+        })
     });
 }
 </script>
