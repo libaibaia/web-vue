@@ -150,6 +150,10 @@ const options =[
         values: "Tencent"
     },
     {
+        label:"华为",
+        values: "HUAWEI"
+    },
+    {
         label:"阿里云",
         values: "AliYun"
     },
