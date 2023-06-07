@@ -37,6 +37,7 @@ import header from "/@/layouts/backend/components/header.vue";
 import axios from "axios";
 import {getUrl} from "/@/utils/axios";
 import {ElNotification} from "element-plus";
+import createDownloadAxios from "/@/utils/downloadFile";
 const localBucketInfo = reactive({
     name:'',
     endpoint:''
@@ -88,15 +89,7 @@ const uploadFile = (id:any)=>{
     bucketInfo.setBucketID(id)
 }
 const downloadFileFun = (id:any) =>{
-    const url = getUrl() + task + `download?id=${id}`;
-    axios({
-        method: 'get',
-        url: url,
-        responseType: 'blob',
-        headers:{
-            'Authorization': window.localStorage.getItem("Authorization")
-        }
-    }).then(response => {
+    createDownloadAxios(task + "download",'GET',id).then(response => {
         const filename = response.headers['content-disposition'].split('filename=')[1];
         const url = window.URL.createObjectURL(new Blob([response.data]));
         const link = document.createElement('a');

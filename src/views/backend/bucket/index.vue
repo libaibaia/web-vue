@@ -111,7 +111,7 @@ const files = reactive({
 let getFileListBtn: OptButton = {
     render: 'tipButton',
     name: 'fileLists',
-    title: '下载全部文件',
+    title: '导出文件列表',
     type: 'primary',
     icon: 'el-icon-Download',
     class: 'table-row-edit',

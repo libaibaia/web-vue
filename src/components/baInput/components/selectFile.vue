@@ -12,7 +12,7 @@
         >
             <TableHeader
                 :buttons="['refresh','quickSearch']"
-                :quick-search-placeholder="t('quick Search Placeholder', { fields: t('utils.Original name') })"
+                :quick-search-placeholder="t('quick Search Placeholder', { fields: '文件前缀' })"
             >
             </TableHeader>
 
