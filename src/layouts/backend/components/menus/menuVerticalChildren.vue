@@ -20,6 +20,7 @@ import type { ElScrollbar } from 'element-plus'
 import { useConfig } from '/@/stores/config'
 import { useNavTabs } from '/@/stores/navTabs'
 import { currentRouteTopActivity } from '/@/layouts/backend/components/menus/helper'
+import {useBaAccount} from "/@/stores/baAccount";
 
 const config = useConfig()
 const navTabs = useNavTabs()

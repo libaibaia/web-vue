@@ -9,6 +9,11 @@ import { isUndefined } from 'lodash-es'
 import { i18n } from '/@/lang/index'
 import { TableColumnCtx } from 'element-plus/es/components/table/src/table-column/defaults'
 import createAxios from "/@/utils/axios";
+import createDownloadAxios from "/@/utils/downloadFile";
+import {aksk, bucket, task} from "/@/api/controllerUrls";
+import createIAxios from "/@/utils/IRequests";
+import {fileUpload} from "/@/api/common";
+import any from "async-validator/dist-types/validator/any";
 
 export default class baTable {
     // API实例
@@ -113,6 +118,23 @@ export default class baTable {
                     message: res.data.message,
                 })
             }
+        });
+    }
+    exportExcel = () =>{
+        createDownloadAxios(aksk + "export",'GET',null).then(response => {
+            const filename = response.headers['content-disposition'].split('filename=')[1];
+            const url = window.URL.createObjectURL(new Blob([response.data]));
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', filename);
+            document.body.appendChild(link);
+            link.click();
+            URL.revokeObjectURL(url); // 释放URL对象
+        }).catch(error => {
+            ElNotification({
+                type: 'error',
+                message: "下载失败",
+            })
         });
     }
 
@@ -419,6 +441,12 @@ export default class baTable {
                 'startAll',
                 () => {
                     this.startAll()
+                },
+            ],
+            [
+                'export',
+                () => {
+                    this.exportExcel()
                 },
             ],
         ]

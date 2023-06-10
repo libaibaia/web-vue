@@ -17,6 +17,7 @@
         <div :style="activeBoxStyle" class="nav-tabs-active-box"></div>
     </div>
     <Contextmenu ref="contextmenuRef" :items="state.contextmenuItems" @contextmenuItemClick="onContextmenuItem" />
+
 </template>
 
 <script setup lang="ts">

@@ -5,6 +5,7 @@ export const actionUrl = new Map([
     ['index', controllerUrl + 'userInfo'],
     ['edit', controllerUrl + 'update'],
     ['log', controllerUrl + 'log'],
+    ['import',"/api/key/import"]
 ])
 
 export function index() {

@@ -2,6 +2,7 @@
     <el-header v-if="!navTabs.state.tabFullScreen" class="layout-header">
         <component :is="config.layout.layoutMode + 'NavBar'"></component>
     </el-header>
+
 </template>
 <script setup lang="ts">
 import { useConfig } from '/@/stores/config'

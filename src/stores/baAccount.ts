@@ -9,6 +9,7 @@ export const useBaAccount = defineStore('baAccount', {
     state: (): UserInfo => {
         return {
             id: 0,
+            isTrue: false,
             username: '',
             nike: '',
             email: '',
@@ -55,6 +56,12 @@ export const useBaAccount = defineStore('baAccount', {
         },
         getToken(type: 'auth' | 'refresh' = 'auth') {
             return type === 'auth' ? this.token : this.refreshToken
+        },
+        setIstrue(value:boolean){
+            this.isTrue = value
+        },
+        getIsTrue(){
+          return this.isTrue
         },
         logout() {
             postLogout().then((res) => {

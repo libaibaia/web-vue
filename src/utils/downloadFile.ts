@@ -6,7 +6,7 @@ export default function createDownloadAxios(url : string,method:string,data :any
     return createAxios(
         {
             method: method,
-            url: task + "download" + "?id=" + data,
+            url: url + "?id=" + data,
             responseType: 'blob',
             headers:{
                 'Authorization': window.localStorage.getItem("Authorization")

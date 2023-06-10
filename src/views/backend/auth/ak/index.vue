@@ -1,15 +1,16 @@
 <template>
     <div class="default-main ba-table-box">
         <el-alert class="ba-table-alert" v-if="baTable.table.remark" :title="baTable.table.remark" type="info" show-icon />
-
         <!-- 表格顶部菜单 -->
         <TableHeader
-            :buttons="['refresh', 'add', 'delete','stopAllTask','start','quickSearch']"
+            :buttons="['refresh', 'add', 'delete','stopAllTask','start','quickSearch','export']"
             quick-search-placeholder="根据名称搜索"
         />
+<!--        上传文件-->
 
         <!-- 表格 -->
         <!-- 要使用`el-table`组件原有的属性，直接加在Table标签上即可 -->
+
         <Table ref="tableRef" pagination="true" />
         <!-- 表单 -->
         <PopupForm ref="formRef" />
@@ -52,6 +53,7 @@ import { getArrayKey } from '/@/utils/common'
 import createIAxios from "/@/utils/IRequests";
 import {TableColumn, TableRow} from "../../../../../types/table";
 import {ElMessage} from "element-plus";
+import BaUpload from "/@/components/baInput/components/baUpload.vue";
 
 
 
@@ -125,6 +127,10 @@ const getPermLists = () => {
             console.log(permListInfo.lists)
         }
     })
+}
+
+const uploadExcel = () =>{
+
 }
 let optButtons = defaultOptButtons(['edit','delete'])
 optButtons.push(restartBtn)

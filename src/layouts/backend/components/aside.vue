@@ -1,9 +1,11 @@
 <template>
     <el-aside v-if="!navTabs.state.tabFullScreen" :class="'layout-aside-' + config.layout.layoutMode + ' ' + (config.layout.shrink ? 'shrink' : '')">
+
         <Logo v-if="config.layout.menuShowTopBar" />
         <MenuVerticalChildren v-if="config.layout.layoutMode == 'Double'" />
         <MenuVertical v-else />
     </el-aside>
+
 </template>
 
 <script setup lang="ts">

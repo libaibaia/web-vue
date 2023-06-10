@@ -57,6 +57,7 @@ export interface AdminInfo {
 
 export interface UserInfo {
     id: number
+    isTrue: boolean
     username: string
     nike: string
     email: string

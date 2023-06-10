@@ -35,6 +35,12 @@
                 <span class="table-header-operate-text">重新扫描全部</span>
             </el-button>
         </el-tooltip>
+        <el-tooltip v-if="props.buttons.includes('export')" content="导出KEY" placement="top">
+            <el-button v-blur @click="onAction('export')" class="table-header-operate" type="primary">
+                <Icon name="el-icon-Download" />
+                <span class="table-header-operate-text">导出key列表</span>
+            </el-button>
+        </el-tooltip>
         <el-popconfirm
             v-if="props.buttons.includes('delete')"
             @confirm="onAction('delete')"
