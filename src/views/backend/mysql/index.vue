@@ -141,6 +141,7 @@ const baTable = new baTableClass(
     {
         column: [
             { type: 'selection', align: 'center', operator: false },
+            { label: 'key名称', prop: 'keyName', align: 'center', operator: 'LIKE', operatorPlaceholder: t('Fuzzy query') },
             { label: 'id', prop: 'id', align: 'center', operator: 'LIKE', operatorPlaceholder: t('Fuzzy query'), width: 70 },
             { label: '实例ID', prop: 'instanceId', align: 'center', operator: 'LIKE', operatorPlaceholder: t('Fuzzy query') },
             { label: '实例名称', prop: 'instanceName', align: 'center', operator: 'LIKE', operatorPlaceholder: t('Fuzzy query') },

@@ -150,6 +150,10 @@ const options =[
         values: "Tencent"
     },
     {
+        label:"亚马逊",
+        values: "AWS"
+    },
+    {
         label:"华为",
         values: "HUAWEI"
     },
@@ -160,36 +164,9 @@ const options =[
     {
         label:"七牛",
         values: "QINiu"
-    },
-    {
-        label:"未知(未知厂商请选择)",
-        values: "no"
     }
 ]
-// getMenuRules().then((res) => {
-//     state.menuRules = res.data.list
-// })
 
-
-// watch(
-//     () => baTable.form.items!.rules,
-//     () => {
-//         if (baTable.form.items!.rules && baTable.form.items!.rules.length) {
-//             if (baTable.form.items!.rules.includes('*')) {
-//                 let arr: number[] = []
-//                 for (const key in state.menuRules) {
-//                     arr.push(state.menuRules[key].id)
-//                 }
-//                 state.defaultCheckedKeys = arr
-//             } else {
-//                 state.defaultCheckedKeys = baTable.form.items!.rules
-//             }
-//         } else {
-//             state.defaultCheckedKeys = []
-//         }
-//         state.treeKey = uuid()
-//     }
-// )
 </script>
 
 <style scoped lang="scss">

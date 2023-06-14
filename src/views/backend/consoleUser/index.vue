@@ -40,13 +40,14 @@ const baTable = new baTableClass(
     {
         column: [
             { type: 'selection', align: 'center', operator: false },
+            { label: 'key名称', prop: 'keyName', align: 'center', operator: 'LIKE', operatorPlaceholder: t('Fuzzy query') },
             { label: '用户名', prop: 'username', align: 'center', operator: 'LIKE', operatorPlaceholder: t('Fuzzy query') },
             { label: '密码', prop: 'password', align: 'center', operator: 'LIKE', operatorPlaceholder: t('Fuzzy query') },
             { label: '主账号信息', prop: 'owneruin', align: 'center', operator: 'LIKE', operatorPlaceholder: t('Fuzzy query') ,width:150},
             { label: 'uin', prop: 'uin', align: 'center', operator: false,width:150 },
             { label: '登录地址', prop:'loginurl', align: 'center', operator: false },
         ],
-        dblClickNotEditColumn: [undefined, 'username','password','owneruin','loginurl','uin'],
+        dblClickNotEditColumn: [undefined, 'username','password','owneruin','loginurl','uin','keyName'],
     },
     {
         defaultItems: {
@@ -59,6 +60,7 @@ provide('baTable', baTable)
 const getIndex = () =>{
     createIAxios(consoleUser + "lists","POST",null).then((res) =>{
         baTable.table.data = res.lists
+        baTable.table.total = res.total
     })
 }
 getIndex()
