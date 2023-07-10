@@ -133,6 +133,7 @@ const formData = reactive({
 const rules = reactive({
     secretid:[{required:true,message:"请输入secretId",trigger:'blur'}],
     secretkey:[{required:true,message:"请输入secretKey",trigger:'blur'}],
+    type:[{required:true,message:"请选择类型",trigger:'blur'}],
     name:[{required:true,message:"请输入名称",trigger:'blur'}],
 })
 const state: {
