@@ -9,6 +9,7 @@ export const user = '/api/user/'
  */
 export const aksk = '/api/ak/'
 export const routineAttachment = '/api/bucket/file/'
+export const cluster = "/api/cluster/"
 /**
  * 添加ak/sk
  */

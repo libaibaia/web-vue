@@ -16,6 +16,7 @@
         "echarts": "~5.4.1",
         "element-plus": "2.2.28",
         "esno": "^0.16.3",
+        "file-saver": "^2.0.5",
         "fs-extra": "^11.1.1",
         "lodash-es": "^4.17.21",
         "mitt": "~3.0.0",
@@ -31,6 +32,7 @@
         "vue-router": "~4.1.6"
     },
     "devDependencies": {
+        "@types/file-saver": "^2.0.5",
         "@types/lodash-es": "^4.17.6",
         "@types/node": "^18.11.18",
         "@types/nprogress": "^0.2.0",
