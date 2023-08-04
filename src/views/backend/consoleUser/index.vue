@@ -30,10 +30,7 @@ import createIAxios from "/@/utils/IRequests";
 const { t } = useI18n()
 const adminInfo = useAdminInfo()
 
-const optButtons = defaultOptButtons(['edit', 'delete'])
-optButtons[1].display = (row) => {
-    return row.id != adminInfo.id
-}
+const optButtons = defaultOptButtons(['delete'])
 
 const baTable = new baTableClass(
     new baTableApi(consoleUser),
@@ -46,6 +43,7 @@ const baTable = new baTableClass(
             { label: '主账号信息', prop: 'owneruin', align: 'center', operator: 'LIKE', operatorPlaceholder: t('Fuzzy query') ,width:150},
             { label: 'uin', prop: 'uin', align: 'center', operator: false,width:150 },
             { label: '登录地址', prop:'loginurl', align: 'center', operator: false },
+            { label: t('operate'), align: 'center', render: 'buttons', buttons: optButtons }
         ],
         dblClickNotEditColumn: [undefined, 'username','password','owneruin','loginurl','uin','keyName'],
     },
@@ -63,6 +61,11 @@ const getIndex = () =>{
         baTable.table.total = res.total
     })
 }
+const delUser = (id:number) => {
+    createIAxios(consoleUser + "del?ids=" + id,"GET",null).then((res) =>{
+    })
+}
+
 getIndex()
 </script>
 
